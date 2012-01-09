@@ -1,26 +1,30 @@
-PagerDuty = require '../lib/PagerDuty.coffee'
+PagerDuty = require '../src/PagerDuty.coffee'
 assert    = require 'assert'
 
 serviceKey = undefined # insert key
 
-throw new Error 'Need serviceKey!' unless serviceKey?
+throw new Error 'Specify serviceKey!' unless serviceKey?
 
-pager = new PagerDuty serviceKey
+pager = new PagerDuty
+  serviceKey: serviceKey
 
-pager.create 'testError',
+pager.create
+  description: 'testError'
   details: {foo: 'bar'}
   cb: (err, response) ->
     throw err if err
     assert.equal response.status, 'success'
 
-    pager.acknowledge response.incident_key ,
+    pager.acknowledge
+      incidentKey: response.incident_key ,
       description: 'Got the test error!'
       details: {foo: 'bar'}
       cb: (err, response) ->
         throw err if err
         assert.equal response.status, 'success'
 
-        pager.resolve response.incident_key,
+        pager.resolve
+          incidentKey: response.incident_key,
           description: 'Resolved the test error!'
           details: { foo: 'bar'}
           cb: (err, response) ->

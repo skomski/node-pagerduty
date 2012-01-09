@@ -3,10 +3,10 @@ request = require 'request'
 class PagerDuty
   module.exports = PagerDuty
 
-  constructor: (@serviceKey) ->
+  constructor: ({@serviceKey}) ->
     throw new Error 'PagerDuty.constructor: Need serviceKey!' unless @serviceKey?
 
-  create: (description, {incidentKey, details, cb}) ->
+  create: ({description, incidentKey, details, cb}) ->
     throw new Error 'PagerDuty.create: Need description!' unless description?
 
     @_request
@@ -17,7 +17,7 @@ class PagerDuty
       cb: cb
 
 
-  acknowledge: (incidentKey, {details, description, cb}) ->
+  acknowledge: ({incidentKey, details, description, cb}) ->
     throw new Error 'PagerDuty.acknowledge: Need acknowledge!' unless incidentKey?
 
     @_request
@@ -28,7 +28,7 @@ class PagerDuty
       cb: cb
 
 
-  resolve: (incidentKey, {details, description, cb}) ->
+  resolve: ({incidentKey, details, description, cb}) ->
     throw new Eror 'PagerDuty.resolve: Need incidentKey!' unless incidentKey?
 
     @_request
