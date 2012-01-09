@@ -1,16 +1,20 @@
 {
   "author": "Karl Skomski <karl@skomski.com>",
   "name": "pagerduty",
-  "description": "Pagerduty API Wrapper",
+  "description": "A node.js client for PagerDuty",
   "version": "0.0.0",
   "repository": {
-    "url": ""
+    "type": "git",
+    "url": "git://github.com/skomski/node-pagerduty.git"
   },
+  "main": "./index",
   "engines": {
-    "node": "~0.4.12"
+    "node": "*"
   },
   "dependencies": {
     "request": "~2.9.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "coffee-script": "~1.2.0"
+  }
 }
