@@ -1,0 +1,16 @@
+{
+  "author": "Karl Skomski <karl@skomski.com>",
+  "name": "pagerduty",
+  "description": "Pagerduty API Wrapper",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.4.12"
+  },
+  "dependencies": {
+    "request": "~2.9.3"
+  },
+  "devDependencies": {}
+}
