@@ -18,23 +18,23 @@ PagerDuty = require 'pagerduty'
 pager = new PagerDuty serviceKey
 
 pager.create
-  description: 'testError'
+  description: 'testError' # required
   details: {foo: 'bar'}
-  cb: (err, response) ->
+  callback: (err, response) ->
     throw err if err
 
     pager.acknowledge
-      incidentKey: response.incident_key
+      incidentKey: response.incident_key # required
       description: 'Got the test error!'
       details: {foo: 'bar'}
-      cb: (err, response) ->
+      callback: (err, response) ->
         throw err if err
 
         pager.resolve
-          incidentKey: response.incident_key
+          incidentKey: response.incident_key # required
           description: 'Resolved the test error!'
           details: { foo: 'bar'}
-          cb: (err, response) ->
+          callback: (err, response) ->
             throw err if err
 ```
 

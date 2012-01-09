@@ -11,7 +11,7 @@ pager = new PagerDuty
 pager.create
   description: 'testError'
   details: {foo: 'bar'}
-  cb: (err, response) ->
+  callback: (err, response) ->
     throw err if err
     assert.equal response.status, 'success'
 
@@ -19,7 +19,7 @@ pager.create
       incidentKey: response.incident_key ,
       description: 'Got the test error!'
       details: {foo: 'bar'}
-      cb: (err, response) ->
+      callback: (err, response) ->
         throw err if err
         assert.equal response.status, 'success'
 
@@ -27,6 +27,6 @@ pager.create
           incidentKey: response.incident_key,
           description: 'Resolved the test error!'
           details: { foo: 'bar'}
-          cb: (err, response) ->
+          callback: (err, response) ->
             throw err if err
             assert.equal response.status, 'success'

@@ -6,7 +6,7 @@ class PagerDuty
   constructor: ({@serviceKey}) ->
     throw new Error 'PagerDuty.constructor: Need serviceKey!' unless @serviceKey?
 
-  create: ({description, incidentKey, details, cb}) ->
+  create: ({description, incidentKey, details, callback}) ->
     throw new Error 'PagerDuty.create: Need description!' unless description?
 
     @_request
@@ -14,10 +14,10 @@ class PagerDuty
       description: description
       incidentKey: incidentKey
       details: details
-      cb: cb
+      cb: callback
 
 
-  acknowledge: ({incidentKey, details, description, cb}) ->
+  acknowledge: ({incidentKey, details, description, callback}) ->
     throw new Error 'PagerDuty.acknowledge: Need acknowledge!' unless incidentKey?
 
     @_request
@@ -25,10 +25,10 @@ class PagerDuty
       incidentKey: incidentKey
       details: details
       description: description
-      cb: cb
+      cb: callback
 
 
-  resolve: ({incidentKey, details, description, cb}) ->
+  resolve: ({incidentKey, details, description, callback}) ->
     throw new Eror 'PagerDuty.resolve: Need incidentKey!' unless incidentKey?
 
     @_request
@@ -36,7 +36,7 @@ class PagerDuty
       incidentKey: incidentKey
       details: details
       description: description
-      cb: cb
+      cb: callback
 
 
   _request: ({description, incidentKey, eventType, details, cb}) ->

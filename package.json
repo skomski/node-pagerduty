@@ -2,7 +2,7 @@
   "author": "Karl Skomski <karl@skomski.com>",
   "name": "pagerduty",
   "description": "A node.js client for PagerDuty",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/skomski/node-pagerduty.git"
