@@ -9,7 +9,7 @@
   },
   "main": "./index",
   "scripts" : {
-    "test" : "tap test/*.js"
+    "test" : "coffee test/test-PagerDuty.coffee"
   },
   "engines": {
     "node": "*"
