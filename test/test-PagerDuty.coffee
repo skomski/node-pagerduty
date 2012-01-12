@@ -50,9 +50,9 @@ console.log 'create without description'
 assert.throws () -> 
   pager.acknowledge()
 , /incident/
-console.log 'create without incidentKey'
+console.log 'acknowledge without incidentKey'
 
 assert.throws () -> 
   pager.resolve()
 , /incident/
-console.log 'create without incidentKey'
+console.log 'resolve without incidentKey'
