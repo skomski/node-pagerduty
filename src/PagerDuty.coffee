@@ -26,7 +26,7 @@ class PagerDuty
 
     incidentKey ||= null
     details     ||= {}
-    callback          ||= ->
+    callback    ||= ->
 
     json =
       service_key: @serviceKey
