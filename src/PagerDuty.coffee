@@ -26,7 +26,7 @@ class PagerDuty
 
     incidentKey ||= null
     details     ||= {}
-    callback          ||= ->
+    callback    ||= ->
 
     json =
       service_key: @serviceKey
@@ -42,7 +42,7 @@ class PagerDuty
       json: json
     , (err, response, body) ->
       if err or response.statusCode != 200
-        callback err || new Error('PagerDuty._requestFailed: ' + response.statusCode)
+        callback err || new Error(body.errors[0])
       else
         callback null, body
 

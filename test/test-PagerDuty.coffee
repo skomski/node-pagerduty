@@ -1,7 +1,7 @@
 PagerDuty = require '../src/PagerDuty.coffee'
 assert    = require 'assert'
 
-serviceKey = undefined # specify key
+serviceKey = '12345678901234567890123456789012' # specify key
 
 throw new Error 'Specify serviceKey!' unless serviceKey?
 

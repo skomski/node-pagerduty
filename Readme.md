@@ -16,7 +16,7 @@ var pager, PagerDuty;
 PagerDuty = require('pagerduty');
 
 pager = new PagerDuty({
-  serviceKey: '6839b1801ch1032f8a3c22000a9040cf'
+  serviceKey: '12345678901234567890123456789012'
 });
 
 pager.create({
