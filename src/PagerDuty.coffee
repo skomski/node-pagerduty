@@ -9,40 +9,24 @@ class PagerDuty
   create: ({description, incidentKey, details, callback}) ->
     throw new Error 'PagerDuty.create: Need description!' unless description?
 
-    @_request
-      eventType: 'trigger'
-      description: description
-      incidentKey: incidentKey
-      details: details
-      cb: callback
-
+    @_request arguments[0] extends eventType: 'trigger'
 
   acknowledge: ({incidentKey, details, description, callback}) ->
-    throw new Error 'PagerDuty.acknowledge: Need acknowledge!' unless incidentKey?
+    throw new Error 'PagerDuty.acknowledge: Need incidentKey!' unless incidentKey?
 
-    @_request
-      eventType: 'acknowledge'
-      incidentKey: incidentKey
-      details: details
-      description: description
-      cb: callback
-
+    @_request arguments[0] extends eventType: 'acknowledge'
 
   resolve: ({incidentKey, details, description, callback}) ->
     throw new Eror 'PagerDuty.resolve: Need incidentKey!' unless incidentKey?
 
-    @_request
-      eventType: 'resolve'
-      incidentKey: incidentKey
-      details: details
-      description: description
-      cb: callback
+    @_request arguments[0] extends eventType: 'resolve'
 
+  _request: ({description, incidentKey, eventType, details, callback}) ->
+    throw new Eror 'PagerDuty._request: Need eventType!' unless eventType?
 
-  _request: ({description, incidentKey, eventType, details, cb}) ->
     incidentKey ||= null
     details     ||= {}
-    cb          ||= ->
+    callback          ||= ->
 
     json =
       service_key: @serviceKey
@@ -58,9 +42,9 @@ class PagerDuty
       json: json
     , (err, response, body) ->
       if err or response.statusCode != 200
-        cb err || new Error('PagerDuty._requestFailed: ' + response.statusCode)
+        callback err || new Error('PagerDuty._requestFailed: ' + response.statusCode)
       else
-        cb null, body
+        callback null, body
 
 
 
