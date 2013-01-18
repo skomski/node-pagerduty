@@ -17,7 +17,7 @@ class PagerDuty
     @_request arguments[0] extends eventType: 'acknowledge'
 
   resolve: ({incidentKey, details, description, callback}) ->
-    throw new Eror 'PagerDuty.resolve: Need incidentKey!' unless incidentKey?
+    throw new Error 'PagerDuty.resolve: Need incidentKey!' unless incidentKey?
 
     @_request arguments[0] extends eventType: 'resolve'
 
