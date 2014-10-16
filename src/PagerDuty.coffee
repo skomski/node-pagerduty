@@ -22,7 +22,7 @@ class PagerDuty
     @_request arguments[0] extends eventType: 'resolve'
 
   _request: ({description, incidentKey, eventType, details, callback}) ->
-    throw new Eror 'PagerDuty._request: Need eventType!' unless eventType?
+    throw new Error 'PagerDuty._request: Need eventType!' unless eventType?
 
     incidentKey ||= null
     details     ||= {}
