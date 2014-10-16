@@ -1,1 +1,3 @@
-module.exports = require('./lib/PagerDuty');
+require('coffee-script');
+
+module.exports = require('./src/PagerDuty');
