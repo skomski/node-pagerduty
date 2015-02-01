@@ -46,5 +46,50 @@ class PagerDuty
       else
         callback null, body
 
+  createUser: ({subdomain, name, email, requester_id, callback}) ->
 
+    callback    ||= ->
 
+    json =
+      name: name
+      email: email
+      requester_id: requester_id
+
+    uri = 'https://' + subdomain + '.pagerduty.com/api/v1/users'
+
+    request
+      method: 'POST'
+      uri: uri
+      json: json
+      headers: { 'Authorization': 'Token token=' + @serviceKey }
+    , (err, response, body) ->
+      if err or response.statusCode != 201
+        # FIXME for e.g. 401 this causes an error, since body won't
+        # have anything useful in it
+        callback err || new Error(body.error.errors[0])
+      else
+        callback null, body
+
+  createService: ({subdomain, token, name, escalation_policy_id, type, callback}) ->
+
+    callback    ||= ->
+
+    json =
+      name: name
+      escalation_policy_id: escalation_policy_id
+      type: type
+
+    uri = 'https://' + subdomain + '.pagerduty.com/api/v1/services'
+
+    request
+      method: 'POST'
+      uri: uri
+      json: json
+      headers: { 'Authorization': 'Token token=' + @serviceKey }
+    , (err, response, body) ->
+      if err or response.statusCode != 201
+        # FIXME for e.g. 401 this causes an error, since body won't
+        # have anything useful in it
+        callback err || new Error(body.error.errors[0])
+      else
+        callback null, body
