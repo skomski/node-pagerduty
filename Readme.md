@@ -41,10 +41,10 @@ npm install pagerduty
 ### Example response
 
 ```json
-{ 
-  status: 'success',
-  incident_key: '87fb80301f99012f961a1231381bc5dc',
-  message: 'Event processed'
+{
+  "status": "success",
+  "incident_key": "87fb80301f99012f961a1231381bc5dc",
+  "message": "Event processed"
 }
 ```
 
