@@ -41,10 +41,10 @@ class PagerDuty
       uri: 'https://events.pagerduty.com/generic/2010-04-15/create_event.json'
       json: json
     , (err, response, body) ->
-      if err or response.statusCode != 200
-        callback err || new Error(body.errors[0])
-      else
-        callback null, body
-
-
-
+      if err?
+        return callback err
+      if response.statusCode != 200
+        if body.errors?
+          return callback new Error body.errors
+        return callback new Error "Status code #{response.statusCode} from request to PagerDuty API. Body: #{JSON.stringify(body)}"
+      callback null, body
